@@ -5,8 +5,8 @@ h1 {
     color: #333;
 }
 body{
-    background-image : url(https://drive.google.com/file/d/1XngTzcWibb6TDa5HEeiar9MKu4JvUfxw/view?usp=sharing);
-    background-color:lightgray;
+    background-image : url(Gemini_Generated_Image_j4pvqxj4pvqxj4pv.png);
+
     display: flex;
     flex-direction : column;
     align-items: center;
@@ -20,6 +20,7 @@ form {
     width : 50%;
     padding : 20px;
     border-radius : 10px;
+    box-shadow : 5px 5px 15px rgb(0,0,0,3);
 }
 form > div {
     display: flex;
