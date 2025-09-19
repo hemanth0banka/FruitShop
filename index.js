@@ -1,4 +1,14 @@
 let count = 0;
+function eve(event)
+{
+    event.currentTarget.style = "box-shadow : 5px 5px 15px rgb(0,0,0,3); "
+    event.currentTarget.style.transform = "scale(1.05)";
+    event.currentTarget.style.transition = "transform 0.2s ease";
+}
+function eve1(event)
+{
+    event.currentTarget.style = "box-shadow : none; padding : 8px 12px;"
+}
 function use(res)
 {
     let n = Number(res.quantity)
@@ -11,7 +21,7 @@ function use(res)
         ele21.innerText = "delete"
         ele21.addEventListener("click",(event)=>{
             let id = res._id;
-            axios.delete(`https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables/${id}`)
+            axios.delete(`https://crudcrud.com/api/a26e57fa18cf4dc2b28f9fd56334ff1d/vegetables/${id}`)
             document.querySelector("ul").removeChild(ele)
             count--
             document.querySelector("#a2").innerText = `Total : ${count}`
@@ -38,7 +48,7 @@ function use(res)
                         "quantity" : q
                     }
                     let id = res._id;
-                    axios.put(`https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables/${id}`,obj).then((rr)=>
+                    axios.put(`https://crudcrud.com/api/a26e57fa18cf4dc2b28f9fd56334ff1d/vegetables/${id}`,obj).then((rr)=>
                         {
                             console.log(rr)
                             txt.removeChild(text)
@@ -54,6 +64,8 @@ function use(res)
                             ele3.appendChild(ele31)
                             ele31.addEventListener("click",up)
                             ele.appendChild(ele2)
+                            ele.addEventListener("mouseover",eve)
+                            ele.addEventListener("mouseout",eve1)
                             document.querySelector("ul").appendChild(ele)
                         }
                     ).catch()
@@ -65,6 +77,8 @@ function use(res)
         ele.appendChild(txt)
         ele.appendChild(ele3)
         ele.appendChild(ele2)
+    ele.addEventListener("mouseover",eve)
+    ele.addEventListener("mouseout",eve1)
         document.querySelector("ul").appendChild(ele)
 }
 function f(r)
@@ -75,7 +89,7 @@ function f(r)
     }
 }
 window.addEventListener("load",()=>{
-    axios.get("https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables").then((response)=>{
+    axios.get("https://crudcrud.com/api/a26e57fa18cf4dc2b28f9fd56334ff1d/vegetables").then((response)=>{
         f(response);
         count = response.data.length
         document.querySelector("#a2").innerText = `Total : ${count}`
@@ -93,11 +107,12 @@ document.querySelector("form").addEventListener("submit", (event)=> {
         "price": price,
         "quantity": quantity
     }
-    axios.post("https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables", obj).then((response) => {
+    axios.post("https://crudcrud.com/api/a26e57fa18cf4dc2b28f9fd56334ff1d/vegetables", obj).then((response) => {
         console.log(response)
         use(response.data)
         count++
         document.querySelector("#a2").innerText = `Total : ${count}`
+        document.querySelector("form").reset()
         }).catch((error) => {
             console.log(error)
         })
