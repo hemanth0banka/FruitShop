@@ -11,7 +11,7 @@ function use(res)
         ele21.innerText = "delete"
         ele21.addEventListener("click",(event)=>{
             let id = res._id;
-            axios.delete(`https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables/${id}`)
+            axios.delete(`https://crudcrud.com/api/ea2ea5e709a64dd5a14713e26c1f78c9/vegetables/${id}`)
             document.querySelector("ul").removeChild(ele)
             count--
             document.querySelector("#a2").innerText = `Total : ${count}`
@@ -38,7 +38,7 @@ function use(res)
                         "quantity" : q
                     }
                     let id = res._id;
-                    axios.put(`https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables/${id}`,obj).then((rr)=>
+                    axios.put(`https://crudcrud.com/api/ea2ea5e709a64dd5a14713e26c1f78c9/vegetables/${id}`,obj).then((rr)=>
                         {
                             console.log(rr)
                             txt.removeChild(text)
@@ -75,7 +75,7 @@ function f(r)
     }
 }
 window.addEventListener("load",()=>{
-    axios.get("https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables").then((response)=>{
+    axios.get("https://crudcrud.com/api/ea2ea5e709a64dd5a14713e26c1f78c9/vegetables").then((response)=>{
         f(response);
         count = response.data.length
         document.querySelector("#a2").innerText = `Total : ${count}`
@@ -93,7 +93,7 @@ document.querySelector("form").addEventListener("submit", (event)=> {
         "price": price,
         "quantity": quantity
     }
-    axios.post("https://crudcrud.com/api/1f27b52cb4e1495c9876b39c35d69840/vegetables", obj).then((response) => {
+    axios.post("https://crudcrud.com/api/ea2ea5e709a64dd5a14713e26c1f78c9/vegetables", obj).then((response) => {
         console.log(response)
         use(response.data)
         count++
