@@ -1,4 +1,14 @@
 let count = 0;
+function eve(event)
+{
+    event.currentTarget.style = "box-shadow : 5px 5px 15px rgb(0,0,0,3); "
+    event.currentTarget.style.transform = "scale(1.05)";
+    event.currentTarget.style.transition = "transform 0.2s ease";
+}
+function eve1(event)
+{
+    event.currentTarget.style = "box-shadow : none; padding : 8px 12px;"
+}
 function use(res)
 {
     let n = Number(res.quantity)
@@ -54,6 +64,8 @@ function use(res)
                             ele3.appendChild(ele31)
                             ele31.addEventListener("click",up)
                             ele.appendChild(ele2)
+                            ele.addEventListener("mouseover",eve)
+                            ele.addEventListener("mouseout",eve1)
                             document.querySelector("ul").appendChild(ele)
                         }
                     ).catch()
@@ -65,6 +77,8 @@ function use(res)
         ele.appendChild(txt)
         ele.appendChild(ele3)
         ele.appendChild(ele2)
+    ele.addEventListener("mouseover",eve)
+    ele.addEventListener("mouseout",eve1)
         document.querySelector("ul").appendChild(ele)
 }
 function f(r)
@@ -98,6 +112,7 @@ document.querySelector("form").addEventListener("submit", (event)=> {
         use(response.data)
         count++
         document.querySelector("#a2").innerText = `Total : ${count}`
+        document.querySelector("form").reset()
         }).catch((error) => {
             console.log(error)
         })
